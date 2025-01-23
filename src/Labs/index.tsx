@@ -7,7 +7,7 @@ export default function Labs() {
     return (
         <div>
             <h1>Welcome to Web Dev</h1>
-            <h2>Tiffany Pacas Villanueva</h2>
+            <h2>Tiffany Pacas Villanueva - Section 01</h2>
             <TOC />
             <Routes>
                 <Route path="/" element={<Navigate to="Lab1" />} />
