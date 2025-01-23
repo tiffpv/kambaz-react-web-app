@@ -7,7 +7,6 @@ import Labs from "../Labs";
 export default function Kambaz() {
     return (
         <div id="wd-kambaz">
-            <h1>Kambaz</h1>
             <table>
                 <tr>
                     <td valign="top">
