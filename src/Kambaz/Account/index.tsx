@@ -6,7 +6,6 @@ import { Route, Routes, Navigate } from "react-router";
 export default function Account() {
     return (
         <div id="wd-account-screen">
-            <h2>Account</h2>
             <table width="100%">
                 <tr>
                     <td valign="top">
