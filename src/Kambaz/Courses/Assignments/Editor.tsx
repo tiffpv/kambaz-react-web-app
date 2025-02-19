@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Form, Container, Row, Col, Card } from "react-bootstrap";
-import * as db from "../../Database"; // Import assignments data
+import * as db from "../../Database";
 
 export default function AssignmentsEditor() {
   const { cid, aid } = useParams(); 
