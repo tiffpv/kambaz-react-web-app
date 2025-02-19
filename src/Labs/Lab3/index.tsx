@@ -38,7 +38,7 @@ export default function Lab3() {
     console.log('Hello World!')
     return(
         <div id="wd-lab3" className="container">
-            <h3>Lab 3</h3>
+            <h3>JavaScript</h3>
             <VariablesAndConstants />
             <VariableTypes />
             <BooleanVariables />
