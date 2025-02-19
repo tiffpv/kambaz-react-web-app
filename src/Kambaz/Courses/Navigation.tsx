@@ -20,7 +20,7 @@ export default function CoursesNavigation() {
                     key={link}
                     active={pathname === `/Kambaz/Courses/${cid}/${link}`}
                     className={`text-danger bg-white border-0 ${pathname === `/Kambaz/Courses/${cid}/${link}` ? 
-                                    "text-dark border-start border-3 border-dark" : ""}`}
+                              "text-dark border-start border-3 border-dark" : ""}`}
                     as={Link}
                     to={`/Kambaz/Courses/${cid}/${link}`}
                   >
