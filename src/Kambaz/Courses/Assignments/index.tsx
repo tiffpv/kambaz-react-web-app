@@ -7,8 +7,10 @@ import { FaPlus } from "react-icons/fa6";
 import { LuNotebookPen } from "react-icons/lu";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AssignmentsControl from "./AssignmentsControl";
+import { Link, useParams } from "react-router-dom";
 import * as db from "../../Database";
-import { Link, useParams } from "react-router";
+
+
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -16,7 +18,7 @@ export default function Assignments() {
 
   return (
     <div className="p-4">
-      <AssignmentButtons />
+      <AssignmentButtons  />
       <br /><br /><br /><br />
       <ListGroup className="rounded-0" id="wd-assignments">
         <ListGroup.Item className="wd-assignments p-0 mb-5 border-gray">
