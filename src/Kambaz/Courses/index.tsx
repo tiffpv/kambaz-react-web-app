@@ -7,10 +7,12 @@ import { Navigate, Route, Routes, useParams, useLocation } from "react-router-do
 import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
 
-export default function Courses({ courses }: { courses: any[]; }) {
+
+export default function Courses({ courses }: {courses: any[]; }) {
   const { cid } = useParams();
-  const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
+  const course = courses.find((c: any) => c._id === cid);
+
   return (
     <div id="wd-courses">
       <h2 className="text-danger">

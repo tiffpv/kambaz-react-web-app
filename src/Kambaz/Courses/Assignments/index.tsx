@@ -8,13 +8,16 @@ import { LuNotebookPen } from "react-icons/lu";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AssignmentsControl from "./AssignmentsControl";
 import { Link, useParams } from "react-router-dom";
-import * as db from "../../Database";
+import { useSelector } from "react-redux";
 
 
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments.filter((assignment) => assignment.course === cid);
+  const assignments = useSelector((state: any) =>
+    state.assignmentReducer.assignments.filter((assignment: any) => assignment.course === cid));
+  
+  
 
   return (
     <div className="p-4">
@@ -36,7 +39,7 @@ export default function Assignments() {
               <IoEllipsisVertical className="fs-4" />
             </div>
           </div>
-        {assignments.map((assignment) => (
+        {assignments.map((assignment: any) => (
           <ListGroup.Item
             key={assignment._id}
             as={Link}
@@ -54,7 +57,9 @@ export default function Assignments() {
                 <span className="fw-bold"> Due </span> {assignment.due} | {assignment.points} pts
               </p>
             </div>
-            <AssignmentsControl />
+            <AssignmentsControl 
+              assignmentId={assignment._id}
+              title={assignment.title}/>
           </ListGroup.Item>
         ))}
         </ListGroup.Item>

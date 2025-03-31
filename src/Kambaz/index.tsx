@@ -3,39 +3,16 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KambazNavigation from "./Navigation";
 import Courses from "./Courses";
-import * as db from "./Database";
-import { useState } from "react";
 import Labs from "../Labs";
 import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";
+import ProtectedCourseRoute from "./Courses/ProtectedCoursesRoute";
+import { useSelector } from "react-redux";
 
-export default function Kambaz() {
-    const [courses, setCourses] = useState<any[]>(db.courses);
-    const [course, setCourse] = useState<any>({
-        _id: "0", name: "New Course", number: "New Number",
-        startDate: "2023-09-10", endDate: "2023-12-15",
-        image: "/images/reactjs.jpg", description: "New Description"
-    });
-    const updateCourse = () => {
-        setCourses(
-            courses.map((c) => {
-                if (c._id === course._id) {
-                    return course;
-                } else {
-                    return c;
-                }
-            })    
-        );  
-    };
-
-    const addNewCourse = () => {
-        setCourses([...courses, {...course,
-        _id: new Date().getTime().toString() }]);
-    };
-    const deleteCourse = (courseId: any) => {
-    setCourses(courses.filter(
-      (course) => course._id !== courseId));
-    };
+export default function Kambaz() { 
+    const courses = useSelector((state: any) => 
+        state.courseReducer ? state.courseReducer.courses : []
+    );
     return (
         <div id="wd-kambaz">
             <KambazNavigation />
@@ -44,14 +21,8 @@ export default function Kambaz() {
                     <Route path="/" element={<Navigate to="Account" />} />
                     <Route path="/Account/*" element={<Account />} />
                     <Route path="/Dashboard" element={<ProtectedRoute>
-                        <Dashboard
-                            courses={courses}
-                            course={course}
-                            setCourse={setCourse}
-                            addNewCourse={addNewCourse}
-                            deleteCourse={deleteCourse}
-                            updateCourse={updateCourse} /></ProtectedRoute>} />
-                    <Route path="/Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses}/></ProtectedRoute>} />
+                        <Dashboard/></ProtectedRoute>} />
+                    <Route path="/Courses/:cid/*" element={<ProtectedCourseRoute><Courses courses={courses} /></ProtectedCourseRoute>} />
                     <Route path="/Calendar" element={<h1>Calendar</h1>} />
                     <Route path="Inbox" element={<h1>Inbox</h1>} />
                     <Route path="/Labs" element={<Labs />} />
