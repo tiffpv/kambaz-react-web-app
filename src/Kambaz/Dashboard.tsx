@@ -6,7 +6,8 @@ import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 //import { updateCourse } from "./Courses/reducer";
 import { useState } from "react";
-import { removeEnrollment } from "./Enrollments/reducer";
+import { setEnrollments } from "./Enrollments/reducer";
+import { enrollInCourse, unenrollFromCourse, fetchAllEnrollments } from "./Enrollments/client";
 
 export default function Dashboard({
   courses, addNewCourse, course, setCourse, deleteCourse, updateCourse, }: 
@@ -50,9 +51,6 @@ export default function Dashboard({
       description: "New Description",
     });
   }
-  
-
-
   const handleDelete = async (id: string) => {
     await deleteCourse(id);
   };
@@ -60,6 +58,17 @@ export default function Dashboard({
   const handleEdit = (courseEdit: any) => {
     setCourse(courseEdit);
   };
+  const handleEnroll = async (courseId: string) => {
+    await enrollInCourse(currentUser._id, courseId);
+    const updated = await fetchAllEnrollments();
+    dispatch(setEnrollments(updated));
+  }
+  const handleUnenroll = async (courseId: string) => {
+    await unenrollFromCourse(currentUser._id, courseId);
+    const updated = await fetchAllEnrollments();
+    dispatch(setEnrollments(updated));
+  }
+
 
   const allCourses = courses;
 
@@ -150,18 +159,21 @@ export default function Dashboard({
                     variant={"danger"}
                     onClick={(e) => {
                       e.preventDefault();
-                      dispatch(
-
-                        removeEnrollment({
-
-                          user: currentUser._id,
-                          course: course._id,
-                        })
-                      );
+                      handleUnenroll(course._id);
                     }}
                   >
                     Unenroll
                   </Button>
+                    <Button
+                      className="float-end ms-2"
+                      variant={"success"}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleEnroll(course._id);
+                      }}
+                    >
+                      Enroll
+                    </Button>
                   {isFaculty && (
                     <>
                       <Button

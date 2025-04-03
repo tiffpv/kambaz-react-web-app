@@ -9,7 +9,7 @@ const initialState = {
 const coursesSlice = createSlice({
     name: "courses",
     initialState,
-    reducers: {
+    reducers: { 
         setCourses: (state, { payload }) => {
             state.courses = payload;
         },
