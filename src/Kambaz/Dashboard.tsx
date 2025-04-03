@@ -1,74 +1,67 @@
+//import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { addCourse, updateCourse, deleteCourse } from "./Courses/reducer";
+//import { updateCourse } from "./Courses/reducer";
 import { useState } from "react";
-import { addEnrollment, removeEnrollment } from "./Enrollments/reducer";
+import { removeEnrollment } from "./Enrollments/reducer";
 
-export default function Dashboard() {
+export default function Dashboard({
+  courses, addNewCourse, course, setCourse, deleteCourse, updateCourse, }: 
+  { courses: any[];
+    addNewCourse: () => void;
+    course: any;
+    setCourse: (course: any) => void;
+    deleteCourse: (course: any) => void;
+    updateCourse: () => void;
+
+  }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const enrollments = useSelector(
-    (state: any) => state.enrollmentReducer.enrollments
-  );
+  //const enrollments = useSelector(
+    //(state: any) => state.enrollmentReducer.enrollments
+  //);
   const dispatch = useDispatch();
   const isFaculty = currentUser.role === "FACULTY";
   const [courseView, setCourseView] = useState(true);
-  const userEnrollments = enrollments.filter(
-    (e: any) => e.user === currentUser._id
-  );
-  const isEnrolled = (courseId: string) =>
-    userEnrollments.some((e: any) => e.course === courseId);
-  const { courses } = useSelector((state: any) => state.coursesReducer);
-  console.log("currentUser:", currentUser);
-  console.log("courses from Redux:", courses);
-  console.log("enrollments from Redux:", enrollments);
-  console.log("userEnrollments:", userEnrollments);
-  const [course, setCourse] = useState<any>({
-    _id: "0",
-    name: "New Course",
-    number: "New Number",
-    startDate: "2023-09-10",
-    endDate: "2023-12-15",
-    image: "/images/reactjs.jpg",
-    description: "New Description",
-  });
+  //const userEnrollments = enrollments.filter(
+    //(e: any) => e.user === currentUser._id
+  //);
+  //const isEnrolled = (courseId: string) =>
+    //userEnrollments.some((e: any) => e.course === courseId);
+  //const { courses } = useSelector((state: any) => state.coursesReducer);
 
-  const handleAdd = () => {
-    dispatch(addCourse(course));
-    setCourse({ ...course, _id: "", name: "", description: "" });
+
+
+  const handleAdd = async () => {
+    await addNewCourse();
   };
 
-  const handleUpdate = () => {
-    if (course._id) {
-      dispatch(updateCourse(course));
-      setCourse({
-        ...course,
-        _id: "",
-        name: "",
-        number: "",
-        startDate: "",
-        endDate: "",
-        image: "",
-        description: "",
-      });
-    }
-  };
+  const handleUpdate = async () => {
+    await updateCourse();
+    setCourse({
+      _id: "0",
+      name: "New Course",
+      number: "New Number",
+      startDate: "2023-09-10",
+      endDate: "2023-12-15",
+      image: "/images/reactjs.jpg",
+      description: "New Description",
+    });
+  }
+  
 
-  const handleDelete = (id: string) => {
-    dispatch(deleteCourse(id));
+
+  const handleDelete = async (id: string) => {
+    await deleteCourse(id);
   };
 
   const handleEdit = (courseEdit: any) => {
     setCourse(courseEdit);
   };
 
-  const allCourses = courseView
-    ? courses
-    : courses.filter((course: any) =>
-        userEnrollments.some((e: any) => e.course === course._id)
-      );
+  const allCourses = courses;
 
   return (
     <div className="p-4" id="wd-dashboard">
@@ -147,43 +140,27 @@ export default function Dashboard() {
                     {course.description}
                   </Card.Text>
                   <Link
-                    to={
-                      isEnrolled(course._id)
-                        ? `/Kambaz/Courses/${course._id}/Home`
-                        : "#"
-                    }
+                    to={`/Kambaz/Courses/${course._id}/Home`}
                     className="wd-dashboard-course-link text-decoration-none text-dark"
                   >
-                    <Button
-                      variant="primary"
-                      disabled={!isEnrolled(course._id)}
-                    >
-                      Go
-                    </Button>
+                    <Button variant="primary">Go</Button>
                   </Link>
                   <Button
                     className="float-end ms-2"
-                    variant={isEnrolled(course._id) ? "danger" : "success"}
+                    variant={"danger"}
                     onClick={(e) => {
                       e.preventDefault();
-                      if (isEnrolled(course._id)) {
-                        dispatch(
-                          removeEnrollment({
-                            user: currentUser._id,
-                            course: course._id,
-                          })
-                        );
-                      } else {
-                        dispatch(
-                          addEnrollment({
-                            user: currentUser._id,
-                            course: course._id,
-                          })
-                        );
-                      }
+                      dispatch(
+
+                        removeEnrollment({
+
+                          user: currentUser._id,
+                          course: course._id,
+                        })
+                      );
                     }}
                   >
-                    {isEnrolled(course._id) ? "Unenroll" : "Enroll"}
+                    Unenroll
                   </Button>
                   {isFaculty && (
                     <>

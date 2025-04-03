@@ -8,15 +8,28 @@ import { LuNotebookPen } from "react-icons/lu";
 import { IoMdArrowDropdown } from "react-icons/io";
 import AssignmentsControl from "./AssignmentsControl";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import * as coursesClient from "../client";
+import * as assignmentsClient from "./client";
+import { setAssignments, deleteAssignment } from "./reducer";
 
 export default function Assignments() {
   const { cid } = useParams();
   const assignments = useSelector((state: any) =>
     state.assignmentReducer.assignments.filter((assignment: any) => assignment.course === cid));
-  
+  const dispatch = useDispatch();
+  const fetchAssignments = async () => {
+    const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
+    dispatch(setAssignments(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+  const handleDelete = async (assignmentId: string) => {
+    await assignmentsClient.deleteAssignment(assignmentId);
+    dispatch(deleteAssignment(assignmentId));
+  }
   
 
   return (
@@ -59,7 +72,8 @@ export default function Assignments() {
             </div>
             <AssignmentsControl 
               assignmentId={assignment._id}
-              title={assignment.title}/>
+              title={assignment.title}
+              deleteAssignment={handleDelete}/>
           </ListGroup.Item>
         ))}
         </ListGroup.Item>

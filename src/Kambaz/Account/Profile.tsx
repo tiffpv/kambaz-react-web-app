@@ -1,3 +1,4 @@
+import * as client from "./client";
 import { useNavigate } from "react-router-dom";
 import { FormControl, Button, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -14,10 +15,16 @@ export default function Profile() {
         return navigate("/Kambaz/Account/Signin");
         setProfile(currentUser);
     };
-    const signout = () => {
+    const signout = async () => {
+        await client.signout();
         dispatch(setCurrentUser(null));
         navigate("/Kambaz/Account/Signin");
     };
+    const updateProfile = async () => {
+        const updatedProfile = await client.updateUser(profile);
+        dispatch(setCurrentUser(updatedProfile));
+    };
+    
     useEffect(() => { fetchProfile(); }, []);
 
     return (
@@ -43,6 +50,7 @@ export default function Profile() {
                     <option value="FACULTY">Faculty</option>
                     <option value="STUDENT">Student</option>
                 </select>
+                <button onClick={updateProfile} className="btn btn-primary w-100 mb-2"> Update </button>
                 <Button variant="danger" onClick={signout} className="w-100 mb-2" id="wd-signout-btn">Sign Out</Button>
             </div>
             )}

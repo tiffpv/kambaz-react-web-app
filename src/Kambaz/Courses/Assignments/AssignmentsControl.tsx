@@ -1,23 +1,25 @@
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
-import { deleteAssignment } from "./reducer";
+//import { deleteAssignment } from "./reducer";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 
 export default function AssignmentsControl(props: any) {
-  const { assignmentId, title } = props;
+  const { assignmentId, title, deleteAssignment } = props;
   const [showDelete, setShowDelete] = useState(false);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const currentUser = useSelector(
     (state: any) => state.accountReducer.currentUser
   );
   const isFaculty = currentUser.role === "FACULTY";
 
-  const handleDelete = () => {
-    dispatch(deleteAssignment(assignmentId));
-    setShowDelete(false);
+  const handleDelete = async () => {
+    if (deleteAssignment) {
+      await deleteAssignment(assignmentId);
+      setShowDelete(false);
+    }
   };
 
   return (
