@@ -84,6 +84,26 @@ export default function TOC() {
           My Github{" "}
         </Nav.Link>{" "}
       </Nav.Item>
+      <Nav.Item>
+        {" "}
+        <Nav.Link
+          href="https://github.com/tiffpv/kambaz-node-server-app.git"
+          target="_blank"
+        >
+          {" "}
+          Node Server Github{" "}
+        </Nav.Link>{" "}
+      </Nav.Item>
+      <Nav.Item>
+        {" "}
+        <Nav.Link
+          href="https://kambaz-node-server-app-evua.onrender.com"
+          target="_blank"
+        >
+          {" "}
+          Node Server on Render{" "}
+        </Nav.Link>{" "}
+      </Nav.Item>
     </Nav>
   );
 }
