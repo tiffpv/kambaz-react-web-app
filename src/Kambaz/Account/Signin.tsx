@@ -19,11 +19,11 @@ export default function Signin() {
     return (
         <div id="wd-signin-screen">
             <h1>Sign in</h1>
-            <FormControl defaultValue={credentials.username}
-             onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+            <FormControl value={credentials.username || ""}
+             onChange={(e) => setCredentials({ ...credentials, username: e.target.value.trim() })}
                 id="wd-username" placeholder="username" className="mb-2" />
-            <FormControl defaultValue={credentials.password}
-             onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+            <FormControl value={credentials.password || ""}
+             onChange={(e) => setCredentials({ ...credentials, password: e.target.value.trim() })}
                 id="wd-password" placeholder="password" className="mb-2" />
             <Button onClick={signin} id="wd-signin-btn" className="w-100" > Sign in </Button>
             <Link id="wd-signup-link" to="/Kambaz/Account/Signup"> Sign up </Link>
