@@ -3,27 +3,30 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 //import { updateCourse } from "./Courses/reducer";
 import { useState } from "react";
-import { setEnrollments } from "./Enrollments/reducer";
-import { enrollInCourse, unenrollFromCourse, fetchAllEnrollments } from "./Enrollments/client";
+//import { setEnrollments } from "./Enrollments/reducer";
+//import { enrollInCourse, unenrollFromCourse, fetchAllEnrollments } from "./Enrollments/client";
 
 export default function Dashboard({
-  courses, addNewCourse, course, setCourse, deleteCourse, updateCourse, }: 
+  courses, addNewCourse, course, setCourse, deleteCourse, updateCourse, enrolling, setEnrolling, updateEnrollment, }: 
   { courses: any[];
     addNewCourse: () => void;
     course: any;
     setCourse: (course: any) => void;
     deleteCourse: (course: any) => void;
     updateCourse: () => void;
+    enrolling: boolean;
+    setEnrolling: (value: boolean) => void;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void
 
   }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   //const enrollments = useSelector(
     //(state: any) => state.enrollmentReducer.enrollments
   //);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const isFaculty = currentUser.role === "FACULTY";
   const [courseView, setCourseView] = useState(true);
   //const userEnrollments = enrollments.filter(
@@ -58,6 +61,7 @@ export default function Dashboard({
   const handleEdit = (courseEdit: any) => {
     setCourse(courseEdit);
   };
+  /*
   const handleEnroll = async (courseId: string) => {
     await enrollInCourse(currentUser._id, courseId);
     const updated = await fetchAllEnrollments();
@@ -68,6 +72,7 @@ export default function Dashboard({
     const updated = await fetchAllEnrollments();
     dispatch(setEnrollments(updated));
   }
+  */
 
 
   const allCourses = courses;
@@ -75,12 +80,16 @@ export default function Dashboard({
   return (
     <div className="p-4" id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
+
       <hr />
       <h5>
         {isFaculty && (
           <>
+            <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary" >
+                {enrolling ? "My Courses" : "All Courses"}
+            </button>
             <Button
-              className="btn btn-primary float-end"
+              className="btn btn-primary float-end me-2"
               id="wd-add-new-course-click"
               onClick={handleAdd}
             >
@@ -154,26 +163,17 @@ export default function Dashboard({
                   >
                     <Button variant="primary">Go</Button>
                   </Link>
-                  <Button
-                    className="float-end ms-2"
-                    variant={"danger"}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleUnenroll(course._id);
-                    }}
-                  >
-                    Unenroll
-                  </Button>
-                    <Button
-                      className="float-end ms-2"
-                      variant={"success"}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleEnroll(course._id);
-                      }}
-                    >
-                      Enroll
-                    </Button>
+                  {enrolling && (
+                    <button onClick={(event) => { 
+                      event.preventDefault();
+                      updateEnrollment(course._id, !course.enrolled);
+                    }} 
+                      className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`} >
+                      {course.enrolled ? "Unenroll" : "Enroll"}
+                    </button>
+                  )}
+
+
                   {isFaculty && (
                     <>
                       <Button
