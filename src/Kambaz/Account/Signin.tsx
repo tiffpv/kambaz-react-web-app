@@ -11,11 +11,13 @@ export default function Signin() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const signin = async () => {
+        console.log("🚀 Attempting login with:", credentials);
         const user = await client.signin(credentials);
             if (!user) return;
             dispatch(setCurrentUser(user));
             navigate("/Kambaz/Dashboard");
-  };
+            
+    };
     return (
         <div id="wd-signin-screen">
             <h1>Sign in</h1>
