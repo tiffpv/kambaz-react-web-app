@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { publishQuiz, removeQuiz } from "./client";
+import { publishQuiz } from "./client";
 import { updateQuiz, deleteQuiz } from "./reducer";
 
 export default function QuizControl(props: any) {

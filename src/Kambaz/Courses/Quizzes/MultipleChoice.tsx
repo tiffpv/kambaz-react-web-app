@@ -11,7 +11,7 @@ export default function MultipleChoiceEditor({ question, onSave, onCancel, onCha
     const [questionText, setQuestionText] = useState(question?.question || "");
     const [choices, setChoices] = useState(question?.choices || ["", ""]);
     const [correctAnswer, setCorrectAnswer] = useState(question?.correctAnswer || "");
-    const [type, setType] = useState("MULTIPLE_CHOICE");
+    const [type] = useState("MULTIPLE_CHOICE");
 
     const handleChoiceChange = (index: number, value: string) => {
         const updated = [...choices];
