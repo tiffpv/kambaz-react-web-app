@@ -1,0 +1,408 @@
+[
+  {
+    "_id": "Q101",
+    "title": "Rocket Propulsion Quiz",
+    "course": "RS101",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "MULTIPLE_CHOICE",
+        "question": "What is Rocket Propulsion?",
+        "points": 5,
+        "choices": ["HTML", "Hello Text Me Later", "Hypertext Markup Language"],
+        "correctAnswer": "Hypertext Markup Language"
+      },
+      {
+        "_id": "Q2",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which tag creates the largest heading in HTML?",
+        "points": 5,
+        "choices": ["<HTML>", "<header>", "<h1>"],
+        "correctAnswer": "<h1>"
+      },
+      {
+        "_id": "Q3",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which does <br> do?",
+        "points": 5,
+        "choices": ["Bolds text", "Nothing", "Break line"],
+        "correctAnswer": "Break line"
+      }
+    ]
+  },
+  {
+    "_id": "Q102",
+    "title": "Combustion Quiz",
+    "course": "RS101",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "TRUE_FALSE",
+        "question": "CSS stands for 'Cascading Style Sheets'",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q2",
+        "type": "TRUE_FALSE",
+        "question": "CSS is for styling",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q3",
+        "type": "TRUE_FALSE",
+        "question": "Bootstrap is not a CSS framework",
+        "points": 5,
+        "correctAnswer": false
+      }
+    ]
+  },
+  {
+    "_id": "Q103",
+    "title": "Nozzle Design Quiz",
+    "course": "RS101",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q2",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q3",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      }
+    ]
+  },
+  {
+    "_id": "Q201",
+    "title": "Aerodynamics Quiz",
+    "course": "RS102",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "MULTIPLE_CHOICE",
+        "question": "What is Rocket Propulsion?",
+        "points": 5,
+        "choices": ["HTML", "Hello Text Me Later", "Hypertext Markup Language"],
+        "correctAnswer": "Hypertext Markup Language"
+      },
+      {
+        "_id": "Q2",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which tag creates the largest heading in HTML?",
+        "points": 5,
+        "choices": ["<HTML>", "<header>", "<h1>"],
+        "correctAnswer": "<h1>"
+      },
+      {
+        "_id": "Q3",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which does <br> do?",
+        "points": 5,
+        "choices": ["Bolds text", "Nothing", "Break line"],
+        "correctAnswer": "Break line"
+      }
+    ]
+  },
+  {
+    "_id": "Q202",
+    "title": "Subsonic and Supersonic Quiz",
+    "course": "RS102",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "TRUE_FALSE",
+        "question": "CSS stands for 'Cascading Style Sheets'",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q2",
+        "type": "TRUE_FALSE",
+        "question": "CSS is for styling",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q3",
+        "type": "TRUE_FALSE",
+        "question": "Bootstrap is not a CSS framework",
+        "points": 5,
+        "correctAnswer": false
+      }
+    ]
+  },
+  {
+    "_id": "Q203",
+    "title": "Aerodynamic Heating Quiz",
+    "course": "RS102",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q2",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q3",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      }
+    ]
+  },
+  {
+    "_id": "Q301",
+    "title": "Spacecraft Design Quiz",
+    "course": "RS103",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "MULTIPLE_CHOICE",
+        "question": "What is Rocket Propulsion?",
+        "points": 5,
+        "choices": ["HTML", "Hello Text Me Later", "Hypertext Markup Language"],
+        "correctAnswer": "Hypertext Markup Language"
+      },
+      {
+        "_id": "Q2",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which tag creates the largest heading in HTML?",
+        "points": 5,
+        "choices": ["<HTML>", "<header>", "<h1>"],
+        "correctAnswer": "<h1>"
+      },
+      {
+        "_id": "Q3",
+        "type": "MULTIPLE_CHOICE",
+        "question": "Which does <br> do?",
+        "points": 5,
+        "choices": ["Bolds text", "Nothing", "Break line"],
+        "correctAnswer": "Break line"
+      }
+    ]
+  },
+  {
+    "_id": "Q302",
+    "title": "Orbital Mechanics Quiz",
+    "course": "RS103",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "TRUE_FALSE",
+        "question": "CSS stands for 'Cascading Style Sheets'",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q2",
+        "type": "TRUE_FALSE",
+        "question": "CSS is for styling",
+        "points": 5,
+        "correctAnswer": true
+      },
+      {
+        "_id": "Q3",
+        "type": "TRUE_FALSE",
+        "question": "Bootstrap is not a CSS framework",
+        "points": 5,
+        "correctAnswer": false
+      }
+    ]
+  },
+  {
+    "_id": "Q303",
+    "title": "Spacecraft Engineering Quiz",
+    "course": "RS103",
+    "module": "Multiple Modules",
+    "availableDate": "May 7, 2025 11:59PM",
+    "untilDate": "May 1, 2025 at 12:00AM ",
+    "dueDate": "May 5, 2025 at 11:59PM",
+    "points": 15,
+    "type": "Graded Quiz",
+    "published": false,
+    "shuffleAnswers": false,
+    "timeLimit": 20,
+    "multipleAttempts": false,
+    "showCorrectAnswers": "Immediately",
+    "accessCode": "",
+    "oneQuestionAtATime": true,
+    "webcamRequired": false,
+    "lockAfterAnswer": false,
+    "questions": [
+      {
+        "_id": "Q1",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q2",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      },
+      {
+        "_id": "Q3",
+        "type": "FILL_BLANK",
+        "question": "This quiz is about __________",
+        "points": 5,
+        "choices": ["Nothing", "Nozzle design"],
+        "correctAnswer": ["Nozzle design", "nozzle design"]
+      }
+    ]
+  }
+
+]

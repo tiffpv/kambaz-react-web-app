@@ -8,6 +8,7 @@ export default function CoursesNavigation() {
             "Home",
             "Modules",
             "Assignments",
+            "Quizzes",
             "Piazza",
             "People",
             "Grades",

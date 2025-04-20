@@ -3,9 +3,15 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
+import Quizzes from "./Quizzes";
+import QuizDetails from "./Quizzes/Details";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router-dom";
 import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
+import QuizEditor from "./Quizzes/Editor";
+import QuestionEditor from "./Quizzes/QuestionEditor";
+import QuizPreview from "./Quizzes/Preview";
+import StartQuiz from "./Quizzes/Quiz";
 
 export default function Courses({ courses }: {courses: any[]; }) {
   const { cid } = useParams();
@@ -30,6 +36,12 @@ export default function Courses({ courses }: {courses: any[]; }) {
             <Route path="Assignments" element={<Assignments />} />
             <Route path="Assignments/New" element={<AssignmentEditor />} />
             <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+            <Route path="Quizzes" element={<Quizzes />} />
+            <Route path="Quizzes/:qid" element={<QuizDetails />} />
+            <Route path="Quizzes/:qid/edit" element={<QuizEditor />} />
+            <Route path="Quizzes/:qid/Questions" element={<QuestionEditor />} />
+            <Route path="Quizzes/:qid/Preview" element={<QuizPreview />} />
+            <Route path="Quizzes/:qid/Start" element={<StartQuiz />} />
             <Route path="People" element={<PeopleTable />} />
           </Routes>
         </div>

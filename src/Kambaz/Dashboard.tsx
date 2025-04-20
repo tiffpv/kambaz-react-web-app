@@ -1,5 +1,5 @@
 //import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 //import { updateCourse } from "./Courses/reducer";
 import { useState } from "react";
 //import { setEnrollments } from "./Enrollments/reducer";
-//import { enrollInCourse, unenrollFromCourse, fetchAllEnrollments } from "./Enrollments/client";
+import { enrollInCourse, unenrollFromCourse } from "./Enrollments/client";
 
 export default function Dashboard({
   courses, addNewCourse, course, setCourse, deleteCourse, updateCourse, enrolling, setEnrolling, updateEnrollment, }: 
@@ -29,15 +29,13 @@ export default function Dashboard({
   //const dispatch = useDispatch();
   const isFaculty = currentUser.role === "FACULTY";
   const [courseView, setCourseView] = useState(true);
+  const navigate = useNavigate();
   //const userEnrollments = enrollments.filter(
     //(e: any) => e.user === currentUser._id
   //);
   //const isEnrolled = (courseId: string) =>
     //userEnrollments.some((e: any) => e.course === courseId);
   //const { courses } = useSelector((state: any) => state.coursesReducer);
-
-
-
   const handleAdd = async () => {
     await addNewCourse();
   };
@@ -73,7 +71,27 @@ export default function Dashboard({
     dispatch(setEnrollments(updated));
   }
   */
-
+  const handleEnrollmentChange = async (courseId: string, enroll: boolean) => {
+    try {
+      if (enroll) {
+        // Call the API to enroll
+        await enrollInCourse(currentUser._id, courseId);
+      } else {
+        // Call the API to unenroll
+        await unenrollFromCourse(currentUser._id, courseId);
+      }
+      
+      // Call the original updateEnrollment prop to maintain compatibility
+      if (updateEnrollment) {
+        updateEnrollment(courseId, enroll);
+      }
+      
+      // Force a refresh to update the UI
+      navigate(0);
+    } catch (error) {
+      console.error("Error updating enrollment:", error);
+    }
+  };
 
   const allCourses = courses;
 
@@ -85,8 +103,8 @@ export default function Dashboard({
       <h5>
         {isFaculty && (
           <>
-            <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary" >
-                {enrolling ? "My Courses" : "All Courses"}
+            <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary me-2" >
+              {enrolling ? "My Courses" : "All Courses"}
             </button>
             <Button
               className="btn btn-primary float-end me-2"
@@ -166,7 +184,7 @@ export default function Dashboard({
                   {enrolling && (
                     <button onClick={(event) => { 
                       event.preventDefault();
-                      updateEnrollment(course._id, !course.enrolled);
+                      handleEnrollmentChange(course._id, !course.enrolled);
                     }} 
                       className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`} >
                       {course.enrolled ? "Unenroll" : "Enroll"}

@@ -31,19 +31,19 @@ export default function Profile() {
         <Container id="wd-profile-screen" className="mt-4">
             <h3 className="mb-4">Profile</h3>
             {profile && ( <div>
-                <FormControl defaultValue={profile.username} id="wd-username" className="mb-2"
+                <FormControl value={profile.username} id="wd-username" className="mb-2"
                        onChange={(e) => setProfile({ ...profile, username:  e.target.value })}/>
-                <FormControl defaultValue={profile.password} id="wd-password" className="mb-2"
+                <FormControl value={profile.password} id="wd-password" className="mb-2"
                        onChange={(e) => setProfile({ ...profile, password:  e.target.value })}/>
-                <FormControl defaultValue={profile.firstName} id="wd-firstname" className="mb-2"
+                <FormControl value={profile.firstName} id="wd-firstname" className="mb-2"
                        onChange={(e) => setProfile({ ...profile, firstName: e.target.value })}/>
-                <FormControl defaultValue={profile.lastName} id="wd-lastname" className="mb-2"
+                <FormControl value={profile.lastName} id="wd-lastname" className="mb-2"
                        onChange={(e) => setProfile({ ...profile, lastName:  e.target.value })}/>
-                <FormControl defaultValue={profile.dob} id="wd-dob" className="mb-2"
+                <FormControl value={profile.dob} id="wd-dob" className="mb-2"
                        onChange={(e) => setProfile({ ...profile, dob: e.target.value })} type="date"/>
-                <FormControl defaultValue={profile.email} id="wd-email" className="mb-2"
+                <FormControl value={profile.email} id="wd-email" className="mb-2"
                        onChange={ (e) => setProfile({ ...profile, email: e.target.value })}/>
-                <select onChange={(e) => setProfile({ ...profile, role:  e.target.value })}
+                <select value={profile.role || "USER"} onChange={(e) => setProfile({ ...profile, role:  e.target.value })}
                  className="form-control mb-2" id="wd-role">
                     <option value="USER">User</option>
                     <option value="ADMIN">Admin</option>
