@@ -14,12 +14,9 @@ import { setQuizzes } from "./reducer";
 export default function Quizzes() {
     const { cid } = useParams();
     const { quizzes } = useSelector((state: any) => state.quizzesReducer);
-    console.log("📦 Quizzes from Redux state:", quizzes);
     const dispatch = useDispatch();
     const fetchQuizzes = async () => {
-        console.log("🚀 Calling API with course ID:", cid);
         const data = await findQuizzesForCourse(cid!);
-        console.log("📥 API returned quizzes:", data)
         dispatch(setQuizzes(data));
     };
     useEffect(() => {

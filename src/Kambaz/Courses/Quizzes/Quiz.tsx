@@ -12,33 +12,40 @@ export default function Quiz() {
   const [answers, setAnswers] = useState<any>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [attemptsCount, setAttemptsCount] = useState(0);
-  //const [latestAttempt, setLatestAttempt] = useState<any>(null);
+  const [canTakeQuiz, setCanTakeQuiz] = useState(false);
   const [result, setResult] = useState<any>(null);
-
-  const maxAttempts = quiz?.multipleAttempts ? quiz.howManyAttempts || 1 : 1;
-  const canTakeQuiz = attemptsCount < maxAttempts;
 
   useEffect(() => {
     const loadQuiz = async () => {
       if (!qid || !currentUser) return;
       const data = await quizzesClient.getQuiz(qid);
       const count = await quizzesClient.getAttemptCount(currentUser._id, qid);
+
+      const maxAttempts = data.multipleAttempts ? data.howManyAttempts || 1 : 1;
+      const canTake = count.count < maxAttempts;
       setQuiz(data);
       setAttemptsCount(count.count);
-      const latestAttempt = await quizzesClient.getLastAttempt(currentUser._id, qid);
-      if (latestAttempt) {
-        setAnswers(latestAttempt.answers);
-        setIsSubmitted(true);
-        setResult({correct: null, submittedAt: latestAttempt.submittedAt, totalPoints: latestAttempt.score});
-
+      setCanTakeQuiz(canTake);
+      if (!canTake) {
+        const latestAttempt = await quizzesClient.getLastAttempt(currentUser._id, qid);
+        if (latestAttempt) {
+          setAnswers(latestAttempt.answers);
+          setIsSubmitted(true);
+          setResult({
+            submittedAt: latestAttempt.submittedAt,
+            totalPoints: latestAttempt.score,
+          });
+        }
       } else {
         const initialAnswers: any = {};
         data.questions.forEach((q: any) => (initialAnswers[q._id] = ""));
         setAnswers(initialAnswers);
+        setIsSubmitted(false);
+        setResult(null);
       }
     };
     loadQuiz();
-  }, [qid]);
+  }, [qid, currentUser]);
 
   const handleAnswerChange = (qid: string, value: any) => {
     setAnswers({ ...answers, [qid]: value });
@@ -137,7 +144,6 @@ export default function Quiz() {
           </div>
         </>
       )}
-
       {isSubmitted && result && (
         <>
           {result.submittedAt && (
