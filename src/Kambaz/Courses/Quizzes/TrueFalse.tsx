@@ -12,7 +12,7 @@ export default function TrueFalseEditor({ question, onCancel, onSave, onChangeTy
     const [correctAnswer, setCorrectAnswer] = useState(
         question?.correctAnswer ?? true
     );
-    const [type, setType] = useState("TRUE_FALSE");
+    const [type] = useState("TRUE_FALSE");
 
     const handleSave = () => {
         const updatedQuestion = {

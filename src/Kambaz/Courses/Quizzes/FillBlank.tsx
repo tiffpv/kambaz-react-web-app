@@ -10,7 +10,7 @@ export default function FillBlankEditor({ question, onCancel, onSave, onChangeTy
     const [questionText, setQuestionText] = useState(question?.question || "");
     const [correctAnswer, setCorrectAnswer] = useState(question?.correctAnswer || "");
     const [choices, setChoices] = useState(question?.choices || ["", ""]);
-    const [type, setType] = useState("FILL_BLANK");
+    const [type ] = useState("FILL_BLANK");
 
     const handleSave = () => {
         const updatedQuestion = {
