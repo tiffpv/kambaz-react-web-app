@@ -1,6 +1,5 @@
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaBan, FaCheckCircle } from "react-icons/fa";
-//import { deleteAssignment } from "./reducer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
@@ -10,7 +9,6 @@ import { publishQuiz } from "./client";
 import { updateQuiz, deleteQuiz } from "./reducer";
 
 export default function QuizControl(props: any) {
-  
     const { quizId, title, published } = props;
     const navigate = useNavigate();
     const { cid } = useParams();
@@ -22,7 +20,6 @@ export default function QuizControl(props: any) {
     );
     const isFaculty = currentUser.role === "FACULTY";
     const handleDelete = async () => {
-        console.log("🗑️ Deleting quiz with ID:", quizId)
         dispatch(deleteQuiz(quizId));
         setShowDelete(false);
         setShowMenu(false);

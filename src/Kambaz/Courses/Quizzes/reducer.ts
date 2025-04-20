@@ -39,7 +39,6 @@ const quizzesSlice = createSlice({
     },
 
     deleteQuiz: (state, { payload: quizId }) => {
-      console.log("📦 Reducer: removing quiz ID:", quizId);
       state.quizzes = state.quizzes.filter(
         (q: any) => q._id !== quizId
       );

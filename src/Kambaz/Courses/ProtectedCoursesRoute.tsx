@@ -7,9 +7,7 @@ export default function ProtectedCourseRoute({ children }: { children: any }) {
     (state: any) => state.enrollmentReducer.enrollments
   );
   const { cid } = useParams();
-  console.log("currentUser:", currentUser);
-  console.log("enrollments:", enrollments);
-  console.log("cid:", cid);
+
 
   if (!currentUser) {
     return <Navigate to="/Kambaz/Account/Signin" />;
