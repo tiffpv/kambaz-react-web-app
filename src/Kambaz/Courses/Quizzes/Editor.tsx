@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import * as quizzesClient from "./client";
 import { addQuiz, updateQuiz } from "./reducer";
+import ReactQuill from "react-quill";
 
 export default function QuizEditor() {
     const { cid, qid } = useParams();
@@ -107,11 +108,10 @@ export default function QuizEditor() {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label><strong>Quiz Description</strong></Form.Label>
-                <Form.Control
-                    as="textarea"
-                    rows={4}
+                <ReactQuill
                     value={quiz.description || ""}
-                    onChange={(e) => handleUpdate("description", e.target.value)}
+                    onChange={(value) => handleUpdate("description", value)}
+                    theme="snow"
                 />
             </Form.Group>
             <Row className="mb-3">

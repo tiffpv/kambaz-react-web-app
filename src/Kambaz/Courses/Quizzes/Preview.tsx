@@ -46,16 +46,25 @@ export default function QuizPreview() {
     setAnswers({ ...answers, [id]: value });
   };
 
-  const handleSubmit = () => {
+  const calculateScore = () => {
     let total = 0;
     quiz.questions.forEach((q: any) => {
-      if (answers[q._id] === q.correctAnswer) {
-        total += q.points;
+      const correctAnswer = String(q.correctAnswer).trim().toLowerCase();
+      const userAnswer = String(answers[q._id]).trim().toLowerCase();
+      if (userAnswer === correctAnswer) {
+        total += q.points || 1;
       }
     });
-    setScore(total);
-    setSubmitted(true);
+  
+    return { totalPoints: total };
   };
+
+  const handleSubmit = async () => {
+    const result = calculateScore();
+    console.log("Calculated Result:", result);
+    setScore(result.totalPoints);
+    setSubmitted(true);
+  }
 
   return (
     <Container className="p-4">

@@ -104,7 +104,8 @@ export default function MultipleChoiceEditor({ question, onSave, onCancel, onCha
                                     className="me-2"
                                 />
                                 <Form.Control
-                                    type="text"
+                                    as="textarea"
+                                    rows={2}
                                     value={choice}
                                     onChange={(e) => handleChoiceChange(index, e.target.value)}
                                     className="me-2"

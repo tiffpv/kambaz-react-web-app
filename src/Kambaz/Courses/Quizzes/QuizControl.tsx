@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { publishQuiz } from "./client";
+import { publishQuiz, removeQuiz } from "./client";
 import { updateQuiz, deleteQuiz } from "./reducer";
 
 export default function QuizControl(props: any) {
@@ -20,9 +20,10 @@ export default function QuizControl(props: any) {
     );
     const isFaculty = currentUser.role === "FACULTY";
     const handleDelete = async () => {
-        dispatch(deleteQuiz(quizId));
-        setShowDelete(false);
-        setShowMenu(false);
+      await removeQuiz(quizId);
+      dispatch(deleteQuiz(quizId));
+      setShowDelete(false);
+      setShowMenu(false);
     };
 
     const handleEdit = () => {

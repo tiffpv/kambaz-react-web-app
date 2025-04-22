@@ -52,13 +52,16 @@ export default function Quiz() {
   };
 
   const calculateScore = () => {
-    let correct = 0;
     let total = 0;
+  
     quiz.questions.forEach((q: any) => {
-      if (answers[q._id] === q.correctAnswer) correct += 1;
-      total += q.points || 1;
+      const correctAnswer = String(q.correctAnswer).trim().toLowerCase();
+      const userAnswer = String(answers[q._id]).trim().toLowerCase();
+      if (userAnswer === correctAnswer) {
+        total += q.points || 1;
+      }
     });
-    return { correct, totalPoints: correct };
+    return { totalPoints: total };
   };
 
   const handleSubmit = async () => {
