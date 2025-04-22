@@ -61,7 +61,6 @@ export default function QuizPreview() {
 
   const handleSubmit = async () => {
     const result = calculateScore();
-    console.log("Calculated Result:", result);
     setScore(result.totalPoints);
     setSubmitted(true);
   }
